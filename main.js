@@ -27,6 +27,7 @@ function InitializeBoardState() {
     UpdateScreenState();
 }
 
+// Use our gameState data to update what is displayed on our app page
 function UpdateScreenState() {
     // If there is a winner show it.
     if (gameState.Winner === "") {
@@ -42,12 +43,12 @@ function UpdateScreenState() {
     // Update each of the board squares based on gameState
     for (let row = 0; row <= 2; row++) {
         for (let col = 0; col <= 2; col++) {
-            document.getElementById(`${row}${col}`).innerText = gameState.board[row][col];
+            document.getElementById(row.toString() + col.toString()).innerText = gameState.board[row][col];
         }
     }
 }
 
-// Event based game loop works based on events for board squares
+// Event based game loop, called when the user click/chooses a game board square.
 function MainGameLogic(event) {
     // event.target.id[0] returns a string, so we need to convert it to a number.
     let row = Number(event.target.id[0]);
